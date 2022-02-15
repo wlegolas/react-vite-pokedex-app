@@ -2,7 +2,7 @@
 
 This project will be used to learn how create a [React](https://reactjs.org/) application using the tooling [Vite](https://vitejs.dev).
 
-Also I will use to improve my knowledge related to [React](https://reactjs.org/) and its ecosystem, for example, stack for test, state management, etc.
+Also I will use this repository to improve my knowledge related to [React](https://reactjs.org/) and its ecosystem, for example, stack for test, state management, etc.
 
 ## Tech stack
 
