@@ -1,6 +1,6 @@
 # Application example using Vite
 
-This project will be used to learn how can create a [React](https://reactjs.org/) application using [Vite](https://vitejs.dev) Tooling.
+This project will be used to learn how create a [React](https://reactjs.org/) application using the tooling [Vite](https://vitejs.dev).
 
 Also I will use to improve my knowledge related to [React](https://reactjs.org/) and its ecosystem, for example, stack for test, state management, etc.
 
