@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import logo from 'logo.svg'
-import 'App.css'
+import logo from '@modules/app/asserts/logo.svg'
+import '@modules/app/components/App/styles.css'
 
-function App() {
+export const App = () => {
   const [count, setCount] = useState(0)
 
   return (
@@ -41,5 +41,3 @@ function App() {
     </div>
   )
 }
-
-export default App
