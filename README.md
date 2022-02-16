@@ -8,6 +8,7 @@ Also I will use this repository to improve my knowledge related to [React](https
 
 - This project was bootstrapped with [Create Vite App](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
 - [TypeScript](https://www.typescriptlang.org/)
+- [Effector](https://effector.dev) as state management
 
 
 ## Getting Started
