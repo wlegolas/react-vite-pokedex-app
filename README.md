@@ -15,7 +15,7 @@ Also I will use this repository to improve my knowledge related to [React](https
 
 To set up your local environment, after cloning this repository, you will need to:
 
-1. Install [Node.js](https://nodejs.dev/) `v14.15` or above, if not already installed (we recommend using [nvm](https://github.com/nvm-sh/nvm))
+1. Install [Node.js](https://nodejs.dev/) `v16.14` or above, if not already installed (we recommend using [nvm](https://github.com/nvm-sh/nvm))
 2. Install [Yarn](https://classic.yarnpkg.com/en/docs/install), if not already installed
 3. Install the project's dependencies: run `yarn install` on the project's root directory
 
