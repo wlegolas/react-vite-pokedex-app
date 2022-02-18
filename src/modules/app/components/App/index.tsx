@@ -1,43 +1,43 @@
-import { useState } from 'react'
-import logo from '@modules/app/asserts/logo.svg'
-import '@modules/app/components/App/styles.css'
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { Container } from '@modules/app/components/App/styled';
+import { Books } from '@modules/books';
+
+const GlobalStyle = createGlobalStyle`
+  *,
+  *:after,
+  *:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  body{
+    font-family: ${props => props.theme.fontFamily};
+    font-size: ${props => props.theme.baseFontSize};
+    list-style-type: none;
+  }
+`;
+
+const theme = {
+  baseFontSize: '16px',
+  fontFamily: 'Roboto, Helvetica, Arial, sans-serif;',
+  fontWeightLight: 300,
+  fontWeightRegular: 400,
+  fontWeightBold: 700,
+  colors: {
+    black: '#000000',
+    indigoLighter: '#7ca1ec',
+    white: '#ffffff',
+  },
+};
 
 export const App = () => {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
-}
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Container>
+        <Books />
+      </Container>
+    </ThemeProvider>
+  );
+};
