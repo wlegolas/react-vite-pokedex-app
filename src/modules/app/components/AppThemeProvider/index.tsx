@@ -11,12 +11,18 @@ const GlobalStyle = createGlobalStyle`
   *:before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
     text-decoration: none;
   }
+
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+
   body{
-    font-family: ${props => props.theme.fontFamily};
-    font-size: ${props => props.theme.baseFontSize};
+    font-family: ${(props) => props.theme.fontFamily};
+    font-size: ${(props) => props.theme.baseFontSize};
     list-style-type: none;
   }
 `;
@@ -26,9 +32,11 @@ const theme = {
   fontFamily: 'Roboto, Helvetica, Arial, sans-serif;',
   fontWeightLight: 300,
   fontWeightRegular: 400,
+  fontWeightMiddle: 500,
   fontWeightBold: 700,
   colors: {
-    black: '#000000',
+    black: '#0d0d0d',
+    blue: '#0a4870',
     indigoLighter: '#7ca1ec',
     white: '#ffffff',
   },
