@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
+    background-color: ${(props) => props.theme.colors.bodyBg}
     font-family: ${(props) => props.theme.fontFamily};
     font-size: ${(props) => props.theme.baseFontSize};
     list-style-type: none;
@@ -29,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
 
 const theme = {
   baseFontSize: '16px',
-  fontFamily: 'Roboto, Helvetica, Arial, sans-serif;',
+  fontFamily: 'Abel, Arial, Verdana, sans-serif',
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMiddle: 500,
@@ -37,6 +38,7 @@ const theme = {
   colors: {
     black: '#0d0d0d',
     blue: '#0a4870',
+    bodyBg: '#fceeb5;',
     indigoLighter: '#7ca1ec',
     white: '#ffffff',
   },

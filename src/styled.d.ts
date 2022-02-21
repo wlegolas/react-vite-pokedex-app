@@ -11,6 +11,7 @@ declare module 'styled-components' {
     colors: {
       black: string;
       blue: string;
+      bodyBg: string;
       indigoLighter: string;
       white: string;
     };

@@ -3,6 +3,7 @@ type Book = {
   title: string,
   description: string,
   image_url: string,
+  authors: string,
 }
 
 type BooksState = {
