@@ -11,8 +11,8 @@ export const Badge = styled.span`
 `;
 
 export const Card = styled.div`
-  width: 450px;
-  height: 250px;
+  width: 45rem;
+  height: 25rem;
   background-color: ${(props) => props.theme.colors.white};
   background: linear-gradient(${(props) => props.theme.colors.gray80}, ${(props) => props.theme.colors.white});
   box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);

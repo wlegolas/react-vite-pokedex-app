@@ -15,7 +15,7 @@ import {
   PictureWrapper,
 } from './styled';
 
-export const Pokemons = () => (
+export const PokemonCard = () => (
   <Card>
     <PokemonInfo>
       <PointInfo>Height: 0.7 m</PointInfo>
