@@ -10,7 +10,7 @@ export const Badge = styled.span`
   white-space: nowrap;
 `;
 
-export const Card = styled.div`
+export const Card = styled.li`
   width: 45rem;
   height: 25rem;
   background-color: ${(props) => props.theme.colors.white};
