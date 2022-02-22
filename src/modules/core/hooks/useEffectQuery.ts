@@ -1,58 +1,38 @@
+import { useEffect, useMemo } from 'react';
 import { createStore, createEffect } from 'effector';
-import { isFunction, isNil } from 'remeda';
+import { useStore } from 'effector-react';
+import type {
+  UseEffectQueryState,
+  EffectFailureResponse,
+  UseEffectQueryOptions,
+  UseEffectQueryResult,
+  UseEffectQueryEvent,
+  UseEffectQueryStore,
+} from '@modules/core/hooks';
 
-type QueryFnResult<TEffectQueryFnData> = TEffectQueryFnData | Promise<TEffectQueryFnData>;
-
-type UseEffectQueryOptions<TEffectQueryFnData> = {
-  queryName: string;
-  queryFn: () => QueryFnResult<TEffectQueryFnData>;
-};
-
-type EffectFailureResponse = {
-  error: Error;
-};
-
-type UseEffectQueryResult<TEffectQueryFnData> = {
-  isLoading: boolean;
-  hasError: boolean;
-  error: string;
-  data?: TEffectQueryFnData;
-};
-
-const validateOptions = (options: UseEffectQueryOptions<unknown>): void => {
-  if (isNil(options.queryFn) || !isFunction(options.queryFn)) {
-    throw new Error('The property "queryFn" is not a function or was not defined.');
-  }
-};
-
-export const useEffectQuery = <TEffectQueryFnData = unknown>(options: UseEffectQueryOptions<TEffectQueryFnData>) => {
-  validateOptions(options);
-
-  const effectEvent = createEffect<void, TEffectQueryFnData, Error>({
-    name: options.queryName,
-    handler: options.queryFn,
-  });
-
-  const initialState: UseEffectQueryResult<TEffectQueryFnData> = {
+const createEffectQueryStore = <TEffectQueryFnData = unknown>(
+  effectEvent: UseEffectQueryEvent<TEffectQueryFnData>
+): UseEffectQueryStore<TEffectQueryFnData> => {
+  const initialState: UseEffectQueryState<TEffectQueryFnData> = {
     isLoading: false,
     hasError: false,
     error: '',
     data: undefined,
   };
 
-  const onLoadingBooks = (currentState: UseEffectQueryResult<TEffectQueryFnData>, isLoading: boolean) => ({
+  const onLoadingBooks = (currentState: UseEffectQueryState<TEffectQueryFnData>) => ({
     ...currentState,
-    isLoading,
+    isLoading: true,
   });
 
-  const onLoadBooksSuccess = (currentState: UseEffectQueryResult<TEffectQueryFnData>, data: TEffectQueryFnData) => ({
+  const onLoadBooksSuccess = (currentState: UseEffectQueryState<TEffectQueryFnData>, data: TEffectQueryFnData) => ({
     ...currentState,
     isLoading: false,
     data,
   });
 
   const onLoadBooksFailure = (
-    currentState: UseEffectQueryResult<TEffectQueryFnData>,
+    currentState: UseEffectQueryState<TEffectQueryFnData>,
     response: EffectFailureResponse
   ) => ({
     ...currentState,
@@ -61,14 +41,36 @@ export const useEffectQuery = <TEffectQueryFnData = unknown>(options: UseEffectQ
     error: response.error.message,
   });
 
-  const effectStore = createStore<UseEffectQueryResult<TEffectQueryFnData>>(initialState)
-    .on(effectEvent.pending, onLoadingBooks)
+  return createStore<UseEffectQueryState<TEffectQueryFnData>>(initialState)
+    .on(effectEvent, onLoadingBooks)
     .on(effectEvent.doneData, onLoadBooksSuccess)
     .on(effectEvent.fail, onLoadBooksFailure);
+};
+
+const createEffectQueryEvent = <TEffectQueryFnData = unknown>({
+  queryName,
+  queryFn,
+}: UseEffectQueryOptions<TEffectQueryFnData>): UseEffectQueryEvent<TEffectQueryFnData> => {
+  return createEffect<void, TEffectQueryFnData, Error>({
+    name: queryName,
+    handler: queryFn,
+  });
+};
+
+export const useEffectQuery = <TEffectQueryFnData = unknown>(
+  options: UseEffectQueryOptions<TEffectQueryFnData>
+): UseEffectQueryResult<TEffectQueryFnData> => {
+  const effectEvent = useMemo(() => createEffectQueryEvent(options), [options.queryName, options.queryFn]);
+  const effectStore = useMemo(() => createEffectQueryStore(effectEvent), [options.queryName, options.queryFn]);
+  const state = useStore(effectStore);
+
+  useEffect(() => {
+    effectEvent();
+  }, []);
 
   return {
     event: effectEvent,
     store: effectStore,
-    ...effectStore.getState(),
+    ...state,
   };
 };
