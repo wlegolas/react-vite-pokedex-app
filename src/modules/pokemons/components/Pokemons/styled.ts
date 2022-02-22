@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 
+export const Badge = styled.span`
+  background-color: ${(props) => props.theme.colors.white};
+  border-radius: 100px;
+  border: none;
+  color: ${(props) => props.theme.colors.black};
+  display: inline-block;
+  padding: 0.125rem 0.75rem;
+  white-space: nowrap;
+`;
+
 export const Card = styled.div`
   width: 450px;
   height: 250px;
-  background-color: #fff;
-  background: linear-gradient(#f8f8f8, #fff);
+  background-color: ${(props) => props.theme.colors.white};
+  background: linear-gradient(${(props) => props.theme.colors.gray80}, ${(props) => props.theme.colors.white});
   box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
   border-radius: 6px;
   overflow: hidden;
@@ -13,18 +23,17 @@ export const Card = styled.div`
   display: flex;
 `;
 
-// export const Info = styled.div`
-//   position: absolute;
-//   width: 150px;
-//   height: 100%;
-//   background: linear-gradient(#de685e, #ee786e);
-//   transition: width 0.4s;
-//   overflow: hidden;
-//   z-index: 2;
-// `;
+export const PointInfo = styled(Badge)`
+  border: none;
+  color: ${(props) => props.theme.colors.white};
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: ${(props) => props.theme.fontWeightBold};
+  background: rgba(0, 0, 0, 0.15);
+`;
 
 export const PokemonInfo = styled.div`
-  background: linear-gradient(#de685e, #ee786e);
+  background: linear-gradient(#de685e, ${(props) => props.theme.colors.flamingo});
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -41,29 +50,16 @@ export const PokemonInfo = styled.div`
     height: 80%;
     border-left: 2px solid rgba(0, 0, 0, 0.025);
   }
+`;
 
-  .level,
-  .points {
-    top: 15%;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 0.75em;
-    font-weight: bold;
-    background: rgba(0, 0, 0, 0.15);
-    padding: 0.125rem 0.75rem;
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-
-  .picture-container {
-    border-radius: 50%;
-    background-color: white;
-    width: 110px;
-    height: 110px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+export const PictureWrapper = styled.div`
+  border-radius: 50%;
+  background-color: white;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   img {
     width: 85px;
@@ -74,8 +70,10 @@ export const PokemonInfo = styled.div`
 export const Details = styled.div`
   flex: 1;
   height: 100%;
-  padding: 1rem;
   padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
 export const Header = styled.header`
@@ -86,6 +84,7 @@ export const Header = styled.header`
 export const Title = styled.h1`
   margin-bottom: 0;
   text-align: center;
+  text-transform: capitalize;
 `;
 
 export const SubTile = styled.h2`
@@ -95,12 +94,16 @@ export const SubTile = styled.h2`
 
 export const PokemonId = styled.span`
   position: absolute;
-  top: 12px;
-  right: 0;
+  top: 2px;
+  right: 2px;
+  color: ${(props) => props.theme.colors.white};
   font-weight: ${(props) => props.theme.fontWeightBold};
+  background-color: ${(props) => props.theme.colors.flamingo};
+  border-radius: 6px;
+  padding: 0.2rem;
 `;
 
-export const DetailsContent = styled.div`
+export const DetailsSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -108,46 +111,45 @@ export const DetailsContent = styled.div`
   gap: 8px;
   position: relative;
   padding: 0.8rem 0;
-  border-top: 2px solid rgba(0, 0, 0, 0.025);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.025);
 `;
 
-export const TypeList = styled.div`
+export const TypesSection = styled(DetailsSection)`
+  background-color: rgba(0, 0, 0, 0.025);
+
+  .grass {
+    background-color: ${(props) => props.theme.colors.grass};
+  }
+
+  .poison {
+    background-color: ${(props) => props.theme.colors.poison};
+  }
+
+  .fire {
+    background-color: ${(props) => props.theme.colors.fire};
+  }
+
+  .water {
+    background-color: ${(props) => props.theme.colors.water};
+  }
+
+  .bug {
+    background-color: ${(props) => props.theme.colors.bug};
+  }
+
+  .flying {
+    background-color: ${(props) => props.theme.colors.flying};
+    background: linear-gradient(180deg, ${(props) => props.theme.colors.flying} 50%, ${(props) => props.theme.colors.flyingLight} 50%);
+  }
+`;
+
+export const ListWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-
-  .grass {
-    background-color: #9bcc50;
-  }
-
-  .poison {
-    background-color: #b97fc9;
-  }
-
-  .fire {
-    background-color: #fd7d24;
-  }
-
-  .water {
-    background-color: #4592c4;
-  }
-
-  .bug {
-    background-color: #729f3f;
-  }
-
-  .flying {
-    background-color: #3dc7ef;
-    background: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
-  }
+  height: 30px;
 `;
 
-export const PokemonType = styled.span`
-  background-color: red;
-  border-radius: 4px;
-  color: white;
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
+export const AbilityBadge = styled(Badge)`
+  border: 1px solid ${(props) => props.theme.colors.flamingo};
 `;

@@ -28,6 +28,23 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const colors = {
+  black: '#0d0d0d',
+  blue: '#0a4870',
+  bodyBg: '#fceeb5;',
+  bug: '#729f3f',
+  fire: '#fd7d24',
+  flamingo: '#ee786e',
+  flying: '#3dc7ef',
+  flyingLight: '#bdb9b8',
+  grass: '#9bcc50',
+  indigoLighter: '#7ca1ec',
+  gray80: '#f8f8f8',
+  poison: '#b97fc9',
+  water: '#4592c4',
+  white: '#ffffff',
+};
+
 const theme = {
   baseFontSize: '16px',
   fontFamily: 'Abel, Arial, Verdana, sans-serif',
@@ -35,13 +52,7 @@ const theme = {
   fontWeightRegular: 400,
   fontWeightMiddle: 500,
   fontWeightBold: 700,
-  colors: {
-    black: '#0d0d0d',
-    blue: '#0a4870',
-    bodyBg: '#fceeb5;',
-    indigoLighter: '#7ca1ec',
-    white: '#ffffff',
-  },
+  colors,
 };
 
 export const AppThemeProvider = ({ children }: AppThemeProviderProps) => {

@@ -12,7 +12,16 @@ declare module 'styled-components' {
       black: string;
       blue: string;
       bodyBg: string;
+      bug: string;
       indigoLighter: string;
+      fire: string;
+      flamingo: string;
+      flying: string;
+      flyingLight: string;
+      grass: string;
+      gray80: string;
+      poison: string;
+      water: string;
       white: string;
     };
   }

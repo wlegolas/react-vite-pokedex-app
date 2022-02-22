@@ -1,30 +1,51 @@
-import { Card, PokemonInfo, Details, Header, Title, PokemonId, DetailsContent, PokemonType, SubTile, TypeList } from './styled';
+import {
+  Card,
+  PokemonInfo,
+  Details,
+  Header,
+  Title,
+  PokemonId,
+  DetailsSection,
+  TypesSection,
+  AbilityBadge,
+  SubTile,
+  ListWrapper,
+  Badge,
+  PointInfo,
+  PictureWrapper,
+} from './styled';
 
 export const Pokemons = () => (
   <Card>
     <PokemonInfo>
-      <div className="level center">Height: 0.7 m</div>
-      <div className="picture-container">
+      <PointInfo>Height: 0.7 m</PointInfo>
+      <PictureWrapper>
         <img
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
-          alt=""
+          alt="The bulbasaur pokemon"
         />
-      </div>
-      <div className="points center">weight: 6.9 kg</div>
+      </PictureWrapper>
+      <PointInfo>Weight: 6.9 kg</PointInfo>
     </PokemonInfo>
     <Details>
       <Header>
         <Title>bulbasaur</Title>
         <PokemonId>#001</PokemonId>
       </Header>
-      <DetailsContent>
+      <TypesSection>
         <SubTile>Types</SubTile>
-        <TypeList>
-          <PokemonType className="grass">grass</PokemonType>
-          <PokemonType className="poison">poison</PokemonType>
-          <PokemonType className="flying">flying</PokemonType>
-        </TypeList>
-      </DetailsContent>
+        <ListWrapper>
+          <Badge className="grass">grass</Badge>
+          <Badge className="poison">poison</Badge>
+        </ListWrapper>
+      </TypesSection>
+      <DetailsSection>
+        <SubTile>Abilities</SubTile>
+        <ListWrapper>
+          <AbilityBadge>overgrow</AbilityBadge>
+          <AbilityBadge>chlorophyll</AbilityBadge>
+        </ListWrapper>
+      </DetailsSection>
     </Details>
   </Card>
 );
