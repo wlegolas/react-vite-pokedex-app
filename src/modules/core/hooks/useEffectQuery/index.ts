@@ -8,7 +8,7 @@ import type {
   UseEffectQueryResult,
   UseEffectQueryEvent,
   UseEffectQueryStore,
-} from '@modules/core/hooks';
+} from './useEffectQuery';
 
 const createEffectQueryStore = <TEffectQueryFnData = unknown>(
   effectEvent: UseEffectQueryEvent<TEffectQueryFnData>
