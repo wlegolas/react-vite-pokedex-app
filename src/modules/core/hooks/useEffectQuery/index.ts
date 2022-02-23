@@ -69,17 +69,17 @@ export const useEffectQuery = <TEffectQueryFnData = unknown>(
   options: UseEffectQueryOptions<TEffectQueryFnData>
 ): UseEffectQueryResult<TEffectQueryFnData> => {
   const queryOptions = adaptOptions(options);
-  const effectEvent = useMemo(() => createEffectQueryEvent(queryOptions), [queryOptions.queryName]);
-  const effectStore = useMemo(() => createEffectQueryStore(effectEvent), [queryOptions.queryName]);
-  const state = useStore(effectStore);
+  const fetchDataFx = useMemo(() => createEffectQueryEvent(queryOptions), [queryOptions.queryName]);
+  const $store = useMemo(() => createEffectQueryStore(fetchDataFx), [queryOptions.queryName]);
+  const state = useStore($store);
 
   useEffect(() => {
-    effectEvent();
+    fetchDataFx();
   }, []);
 
   return {
-    event: effectEvent,
-    store: effectStore,
+    event: fetchDataFx,
+    store: $store,
     ...state,
   };
 };
