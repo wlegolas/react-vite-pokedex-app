@@ -1,9 +1,38 @@
-type PokemonResponse = {
-  name: string,
-  url: string,
+type NamedResourceResponse = {
+  name: string;
+  url: string;
 };
 
-type PokemonsResponse = {
+type PokemonResourcesResponse = {
   count: number;
-  results: Array<PokemonResponse>;
+  results: Array<NamedResourceResponse>;
+};
+
+type PokemonAbilityResponse = {
+  ability: NamedResourceResponse;
+};
+
+type PokemonSpriteResourceResponse = {
+  front_default: string;
+};
+
+type PokemonSpriteResponse = {
+  other: {
+    dream_world: PokemonSpriteResourceResponse;
+  };
+};
+
+type PokemonTypeResponse = {
+  type: NamedResourceResponse;
+};
+
+type PokemonResponse = {
+  id: number;
+  name: string;
+  url: string;
+  height: number;
+  weight: number;
+  abilities: Array<PokemonAbilityResponse>;
+  sprites: Array<PokemonSpriteResponse>;
+  types: Array<PokemonTypeResponse>;
 };
