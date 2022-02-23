@@ -33,6 +33,6 @@ type PokemonResponse = {
   height: number;
   weight: number;
   abilities: Array<PokemonAbilityResponse>;
-  sprites: Array<PokemonSpriteResponse>;
+  sprites: PokemonSpriteResponse;
   types: Array<PokemonTypeResponse>;
 };

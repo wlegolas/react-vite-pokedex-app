@@ -1,4 +1,4 @@
-import { isNil } from 'remeda';
+import { isNil, pathOr } from 'remeda';
 import { useEffectQuery } from '@modules/core/hooks';
 import { getPokemon } from '@modules/pokedex/services';
 import { DotsLoading } from '@modules/core/components';
@@ -25,12 +25,24 @@ type PokemonCardProps = {
   resourceUrl: string;
 };
 
+const normalizeId = (id: number): string => {
+  const convertedId = `${id}`.padStart(3, '0');
+
+  return `#${convertedId}`;
+};
+
+const normalizePoints = (points: number): number => {
+  return points/10;
+}
+
 export const PokemonCard = ({ name, resourceUrl }: PokemonCardProps) => {
   const queryOptions = {
-    queryName: 'Get Pokemon',
+    queryName: `Get Pokemon ${name}`,
     queryFn: async () => getPokemon(resourceUrl),
   };
   const { isLoading, data: pokemon } = useEffectQuery(queryOptions);
+  const pokemonTypes = pathOr<PokemonResponse | undefined, 'types'>(pokemon, ['types'], []);
+  const pokemonAbilities = pathOr<PokemonResponse | undefined, 'abilities'>(pokemon, ['abilities'], []);
 
   if (isLoading) {
     return (
@@ -41,38 +53,34 @@ export const PokemonCard = ({ name, resourceUrl }: PokemonCardProps) => {
   }
 
   if (isNil(pokemon)) {
+    // TODO: Create a View to show the not found Pokemon
     return <h2>{`Pokemon "${name}" Not found`}</h2>;
   }
 
   return (
     <Card>
       <PokemonInfo>
-        <PointInfo>Height: 0.7 m</PointInfo>
+        <PointInfo>{`Height: ${normalizePoints(pokemon.height)} m`}</PointInfo>
         <PictureWrapper>
-          <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
-            alt={`The ${name} pokemon`}
-          />
+          <img src={pokemon.sprites.other.dream_world.front_default} alt={`The ${name} pokemon`} />
         </PictureWrapper>
-        <PointInfo>Weight: 6.9 kg</PointInfo>
+        <PointInfo>{`Weight: ${normalizePoints(pokemon.weight)} kg`}</PointInfo>
       </PokemonInfo>
       <Details>
         <Header>
-          <Title>{name}</Title>
-          <PokemonId>#001</PokemonId>
+          <Title>{pokemon.name}</Title>
+          <PokemonId>{normalizeId(pokemon.id)}</PokemonId>
         </Header>
         <TypesSection>
           <SubTile>Types</SubTile>
           <ListWrapper>
-            <Badge className="grass">grass</Badge>
-            <Badge className="poison">poison</Badge>
+            {pokemonTypes.map((pokemonType) => <Badge key={pokemonType.type.name} className={pokemonType.type.name}>{pokemonType.type.name}</Badge>)}
           </ListWrapper>
         </TypesSection>
         <DetailsSection>
           <SubTile>Abilities</SubTile>
           <ListWrapper>
-            <AbilityBadge>overgrow</AbilityBadge>
-            <AbilityBadge>chlorophyll</AbilityBadge>
+            {pokemonAbilities.map((pokemonAbility) => <AbilityBadge key={pokemonAbility.ability.name}>{pokemonAbility.ability.name}</AbilityBadge>)}
           </ListWrapper>
         </DetailsSection>
       </Details>
