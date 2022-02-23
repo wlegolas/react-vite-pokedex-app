@@ -21,7 +21,6 @@ const moveAnimation = keyframes`
 `;
 
 export const Container = styled.div`
-  background: linear-gradient(#92bca6, #a2ccb6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,28 +29,21 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   text-align: center;
-
-  .container {
-    height: 15px;
-    width: 105px;
-    display: flex;
-    position: relative;
-  }
 `;
 
-export const LoadingMessage = styled.h2`
+export const Message = styled.h2`
   color: ${(props) => props.theme.colors.black};
   font-size: 2rem;
 `;
 
-export const CircleWrapper = styled.div`
+export const DotsWrapper = styled.div`
   height: 15px;
   width: 105px;
   display: flex;
   position: relative;
 `;
 
-export const Circle = styled.span`
+export const Dot = styled.span`
   width: 13px;
   height: 13px;
   border-radius: 50%;

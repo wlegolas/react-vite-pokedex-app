@@ -1,1 +1,1 @@
-export * from './CircleLoading';
+export * from './DotsLoading';
