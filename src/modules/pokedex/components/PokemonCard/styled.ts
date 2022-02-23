@@ -23,6 +23,10 @@ export const Card = styled.li`
   display: flex;
 `;
 
+export const LoadingWrapper = styled(Card)`
+  background: linear-gradient(#92bca6, #a2ccb6);
+`;
+
 export const PointInfo = styled(Badge)`
   border: none;
   color: ${(props) => props.theme.colors.white};
@@ -138,7 +142,11 @@ export const TypesSection = styled(DetailsSection)`
 
   .flying {
     background-color: ${(props) => props.theme.colors.flying};
-    background: linear-gradient(180deg, ${(props) => props.theme.colors.flying} 50%, ${(props) => props.theme.colors.flyingLight} 50%);
+    background: linear-gradient(
+      180deg,
+      ${(props) => props.theme.colors.flying} 50%,
+      ${(props) => props.theme.colors.flyingLight} 50%
+    );
   }
 `;
 
