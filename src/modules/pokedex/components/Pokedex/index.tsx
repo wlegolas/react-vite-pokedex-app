@@ -5,7 +5,7 @@ import { useEffectQuery } from '@modules/core/hooks';
 
 export const Pokedex = () => {
   const queryOptions = {
-    queryName: 'pokedex',
+    queryName: 'Load Pokemons',
     queryFn: loadPokemons,
   };
   const { isLoading, data: pokemons = [] } = useEffectQuery(queryOptions);
@@ -14,6 +14,10 @@ export const Pokedex = () => {
     return <h1>Loading pokemons, just a moment...</h1>;
   }
 
-
-  return <Container>{pokemons.length > 0 && pokemons.map((pokemon) => <PokemonCard key={pokemon.name} />)}</Container>;
+  return (
+    <Container>
+      {pokemons.length > 0 &&
+        pokemons.map((pokemon) => <PokemonCard key={pokemon.name} name={pokemon.name} resourceUrl={pokemon.url} />)}
+    </Container>
+  );
 };
