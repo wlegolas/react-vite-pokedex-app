@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { createStore, createEffect } from 'effector';
 import { useStore } from 'effector-react';
 import type {
@@ -57,11 +57,20 @@ const createEffectQueryEvent = <TEffectQueryFnData = unknown>({
   });
 };
 
+const adaptOptions = <TEffectQueryFnData>(
+  options: UseEffectQueryOptions<TEffectQueryFnData>
+): UseEffectQueryOptions<TEffectQueryFnData> => {
+  const memoizedQueryFn = useCallback(options.queryFn, [options.queryName]);
+
+  return { ...options, queryFn: memoizedQueryFn };
+};
+
 export const useEffectQuery = <TEffectQueryFnData = unknown>(
   options: UseEffectQueryOptions<TEffectQueryFnData>
 ): UseEffectQueryResult<TEffectQueryFnData> => {
-  const effectEvent = useMemo(() => createEffectQueryEvent(options), [options.queryName, options.queryFn]);
-  const effectStore = useMemo(() => createEffectQueryStore(effectEvent), [options.queryName, options.queryFn]);
+  const queryOptions = adaptOptions(options);
+  const effectEvent = useMemo(() => createEffectQueryEvent(queryOptions), [queryOptions.queryName]);
+  const effectStore = useMemo(() => createEffectQueryStore(effectEvent), [queryOptions.queryName]);
   const state = useStore(effectStore);
 
   useEffect(() => {
