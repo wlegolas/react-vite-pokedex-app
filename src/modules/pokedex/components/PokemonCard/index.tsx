@@ -74,13 +74,19 @@ export const PokemonCard = ({ name, resourceUrl }: PokemonCardProps) => {
         <TypesSection>
           <SubTile>Types</SubTile>
           <ListWrapper>
-            {pokemonTypes.map((pokemonType) => <Badge key={pokemonType.type.name} className={pokemonType.type.name}>{pokemonType.type.name}</Badge>)}
+            {pokemonTypes.map((pokemonType) => (
+              <Badge key={pokemonType.type.name} className={pokemonType.type.name}>
+                {pokemonType.type.name}
+              </Badge>
+            ))}
           </ListWrapper>
         </TypesSection>
         <DetailsSection>
           <SubTile>Abilities</SubTile>
           <ListWrapper>
-            {pokemonAbilities.map((pokemonAbility) => <AbilityBadge key={pokemonAbility.ability.name}>{pokemonAbility.ability.name}</AbilityBadge>)}
+            {pokemonAbilities.map((pokemonAbility) => (
+              <AbilityBadge key={pokemonAbility.ability.name}>{pokemonAbility.ability.name}</AbilityBadge>
+            ))}
           </ListWrapper>
         </DetailsSection>
       </Details>
