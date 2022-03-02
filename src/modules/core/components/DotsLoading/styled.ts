@@ -33,7 +33,7 @@ export const Container = styled.div`
 
 export const Message = styled.h2`
   color: ${(props) => props.theme.colors.black};
-  font-size: 2rem;
+  font-size: 1.5rem;
 `;
 
 export const DotsWrapper = styled.div`

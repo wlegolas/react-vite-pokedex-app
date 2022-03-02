@@ -22,6 +22,7 @@ export const Card = styled.li`
 
 export const LoadingWrapper = styled(Card)`
   background: linear-gradient(#92bca6, #a2ccb6);
+  padding: 0.125rem 0.75rem;
 `;
 
 export const PointInfo = styled(Badge)`
