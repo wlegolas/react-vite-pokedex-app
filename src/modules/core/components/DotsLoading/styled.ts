@@ -31,11 +31,6 @@ export const Container = styled.div`
   text-align: center;
 `;
 
-export const Message = styled.h2`
-  color: ${(props) => props.theme.colors.black};
-  font-size: 1.5rem;
-`;
-
 export const DotsWrapper = styled.div`
   height: 15px;
   width: 105px;

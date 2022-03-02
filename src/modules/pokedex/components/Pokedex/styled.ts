@@ -9,3 +9,7 @@ export const Container = styled.ul`
   grid-auto-rows: minmax(18rem, 1fr);
   align-items: stretch;
 `;
+
+export const LoadingMessage = styled.h2`
+  font-size: 1.5rem;
+`;

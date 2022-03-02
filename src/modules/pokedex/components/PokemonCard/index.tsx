@@ -18,6 +18,7 @@ import {
   PointInfo,
   PictureWrapper,
   LoadingWrapper,
+  LoadingMessage,
 } from './styled';
 
 type PokemonCardProps = {
@@ -32,8 +33,8 @@ const normalizeId = (id: number): string => {
 };
 
 const normalizePoints = (points: number): number => {
-  return points/10;
-}
+  return points / 10;
+};
 
 export const PokemonCard = ({ name, resourceUrl }: PokemonCardProps) => {
   const queryOptions = {
@@ -47,7 +48,9 @@ export const PokemonCard = ({ name, resourceUrl }: PokemonCardProps) => {
   if (isLoading) {
     return (
       <LoadingWrapper>
-        <DotsLoading message={`Loading ${name} information, just a moment...`} />
+        <DotsLoading>
+          <LoadingMessage>{`Loading ${name} information, just a moment...`}</LoadingMessage>
+        </DotsLoading>
       </LoadingWrapper>
     );
   }

@@ -1,12 +1,13 @@
-import { Container, Message, DotsWrapper, Dot } from './styled';
+import { ReactNode } from 'react';
+import { Container, DotsWrapper, Dot } from './styled';
 
 type DotsLoadingProps = {
-  message: string;
+  children: ReactNode
 };
 
-export const DotsLoading = ({ message }: DotsLoadingProps) => (
+export const DotsLoading = ({ children }: DotsLoadingProps) => (
   <Container>
-    <Message>{message}</Message>
+    {children}
     <DotsWrapper>
       <Dot />
       <Dot />

@@ -1,7 +1,7 @@
 import { PokemonCard } from '@modules/pokedex';
 import { loadPokemons } from '@modules/pokedex/services';
 import { useEffectQuery, DotsLoading } from '@modules/core';
-import { Container } from './styled';
+import { Container, LoadingMessage } from './styled';
 
 export const Pokedex = () => {
   const queryOptions = {
@@ -13,7 +13,9 @@ export const Pokedex = () => {
   if (isLoading) {
     return (
       <Container>
-        <DotsLoading message="Loading pokemons, just a moment..." />
+        <DotsLoading>
+          <LoadingMessage>Loading pokemons, just a moment...</LoadingMessage>
+        </DotsLoading>
       </Container>
     );
   }

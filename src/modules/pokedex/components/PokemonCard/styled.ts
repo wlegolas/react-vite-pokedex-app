@@ -25,6 +25,10 @@ export const LoadingWrapper = styled(Card)`
   padding: 0.125rem 0.75rem;
 `;
 
+export const LoadingMessage = styled.h3`
+  font-size: 1.25rem;
+`;
+
 export const PointInfo = styled(Badge)`
   border: none;
   color: ${(props) => props.theme.colors.white};
