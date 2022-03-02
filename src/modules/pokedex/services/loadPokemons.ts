@@ -2,7 +2,7 @@ import { isNil } from 'remeda';
 import api from '@modules/core/services/api';
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 8;
 const CURRENT_PAGE = 0;
 
 export const loadPokemons = async (): Promise<Array<NamedResourceResponse>> => {

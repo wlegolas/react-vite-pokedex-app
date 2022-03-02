@@ -11,6 +11,6 @@ export const Container = styled.main`
 
 export const Content = styled.div`
   width: 100%;
-  padding: 0.75rem 1.25rem;
+  padding: var(--spacing-vertical) var(--spacing-horizontal);
   margin-top: var(--header-height);
 `;

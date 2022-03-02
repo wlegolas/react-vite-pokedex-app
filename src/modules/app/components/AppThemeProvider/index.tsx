@@ -17,7 +17,10 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --z-index-fixed-header: 4;
-    --header-height: 3.5rem;
+    --header-height: 4rem;
+    --global-spacing: 1rem;
+    --spacing-horizontal: 1.25rem;
+    --spacing-vertical: 0.75rem;
   }
 
   html {
@@ -29,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.colors.bodyBg}
     font-family: ${(props) => props.theme.fontFamily};
     list-style-type: none;
+    line-height: 1.65;
   }
 `;
 
@@ -42,6 +46,7 @@ const colors = {
   flying: '#3dc7ef',
   flyingLight: '#bdb9b8',
   grass: '#9bcc50',
+  grassLight: '#b4e965',
   indigoLighter: '#7ca1ec',
   gray80: '#f8f8f8',
   poison: '#b97fc9',
@@ -54,10 +59,11 @@ const theme = {
   fontFamily: 'Abel, Arial, Verdana, sans-serif',
   fontWeightLight: 300,
   fontWeightRegular: 400,
-  fontWeightMiddle: 500,
+  fontWeightSemibold: 500,
   fontWeightBold: 700,
   colors,
 };
+
 
 export const AppThemeProvider = ({ children }: AppThemeProviderProps) => {
   return (

@@ -31,7 +31,7 @@ export const Content = styled.div`
 
 export const Title = styled.h1`
   font-size: 3rem;
-  font-weight: ${(props) => props.theme.fontWeightMiddle};
+  font-weight: ${(props) => props.theme.fontWeightSemibold};
   color: ${(props) => props.theme.colors.black};
   margin-bottom: 1.5rem;
 `;

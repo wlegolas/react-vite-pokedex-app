@@ -6,7 +6,7 @@ declare module 'styled-components' {
     fontFamily: string;
     fontWeightLight: number;
     fontWeightRegular: number;
-    fontWeightMiddle: number;
+    fontWeightSemibold: number;
     fontWeightBold: number;
     colors: {
       black: string;
@@ -19,6 +19,7 @@ declare module 'styled-components' {
       flying: string;
       flyingLight: string;
       grass: string;
+      grassLight: string;
       gray80: string;
       poison: string;
       water: string;

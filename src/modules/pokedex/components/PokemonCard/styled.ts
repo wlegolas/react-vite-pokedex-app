@@ -82,15 +82,17 @@ export const Header = styled.header`
   position: relative;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   margin-bottom: 0;
   text-align: center;
   text-transform: capitalize;
+  font-size: 1.5rem;
 `;
 
-export const SubTile = styled.h2`
+export const SubTile = styled.h3`
   margin-bottom: 0;
   text-align: center;
+  font-size: 1.25rem;
 `;
 
 export const PokemonId = styled.span`
