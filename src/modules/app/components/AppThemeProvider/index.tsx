@@ -15,15 +15,19 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  :root {
+    --z-index-fixed-header: 4;
+    --header-height: 3.5rem;
+  }
+
   html {
     box-sizing: border-box;
-    font-size: 62.5%;
+    font-size: ${(props) => props.theme.baseFontSize};
   }
 
   body{
     background-color: ${(props) => props.theme.colors.bodyBg}
     font-family: ${(props) => props.theme.fontFamily};
-    font-size: ${(props) => props.theme.baseFontSize};
     list-style-type: none;
   }
 `;

@@ -1,12 +1,15 @@
-import { AppThemeProvider } from '@modules/app';
+import { AppThemeProvider, Header } from '@modules/app';
 import { Pokedex } from '@modules/pokedex';
-import { Container } from './styled';
+import { Container, Content } from './styled';
 
 export const App = () => {
   return (
     <AppThemeProvider>
       <Container>
-        <Pokedex />
+        <Header />
+        <Content>
+          <Pokedex />
+        </Content>
       </Container>
     </AppThemeProvider>
   );

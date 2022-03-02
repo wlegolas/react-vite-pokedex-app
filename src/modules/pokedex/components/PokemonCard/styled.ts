@@ -11,15 +11,12 @@ export const Badge = styled.span`
 `;
 
 export const Card = styled.li`
-  width: 45rem;
-  height: 25rem;
   background-color: ${(props) => props.theme.colors.white};
   background: linear-gradient(${(props) => props.theme.colors.gray80}, ${(props) => props.theme.colors.white});
   box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
   border-radius: 6px;
   overflow: hidden;
   position: relative;
-  margin: 1.5rem;
   display: flex;
 `;
 
