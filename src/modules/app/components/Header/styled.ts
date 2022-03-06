@@ -19,32 +19,39 @@ export const LogoCotainer = styled.div`
   align-items: baseline;
   justify-content: space-between;
   gap: 0.5rem;
-`
+`;
 
 export const Title = styled.h1`
   font-size: 2rem;
-`
+`;
 
 export const SubTitle = styled.span`
   font-size: 1.5rem;
-`
+`;
 
-export const Navigator = styled.nav``;
+export const Navigator = styled.nav`
+  height: 100%;
+`;
 
 export const Menu = styled.ul`
   list-style: none;
   display: flex;
+  align-items: center;
+  height: 100%;
 `;
 
 export const MenuItem = styled.li`
-  padding: var(--global-spacing);
+  a {
+    color: ${(props) => props.theme.colors.white};
+    padding: calc(var(--global-spacing)*0.5) var(--global-spacing)
+  }
 `;
 
 export const UserInfo = styled.span`
   background-color: ${(props) => props.theme.colors.grassLight};
   color: ${(props) => props.theme.colors.black};
   font-weight: ${(props) => props.theme.fontWeightBold};
-  padding: calc(var(--global-spacing)*0.5);
+  padding: calc(var(--global-spacing) * 0.5);
   border: 0;
   border-radius: 500%;
 `;

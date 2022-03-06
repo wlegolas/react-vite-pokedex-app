@@ -8,7 +8,9 @@ export const Header = () => (
     </LogoCotainer>
     <Navigator>
       <Menu>
-        <MenuItem>Home</MenuItem>
+        <MenuItem>
+          <a href="#">Home</a>
+        </MenuItem>
         <MenuItem>
           <UserInfo aria-label="The user name initials">WO</UserInfo>
         </MenuItem>
